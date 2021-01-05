@@ -7,7 +7,10 @@ class Quiz extends StatelessWidget {
   final Map questionMap;
   final Function buttonPressEventHandler;
 
-  Quiz({this.questionMap, this.buttonPressEventHandler});
+  Quiz({
+    @required this.questionMap,
+    @required this.buttonPressEventHandler,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,9 @@ class Quiz extends StatelessWidget {
         Question(
           questionMap['questionText'],
         ),
-        ...(questionMap['answers'] as List<String>).map((answer) {
+        ...(questionMap['answers'] as List<Map<String, Object>>).map((answer) {
           return Answer(
-            buttonLabel: answer,
+            buttonMap: answer,
             buttonPressEventHandler: buttonPressEventHandler,
           );
         }).toList(),

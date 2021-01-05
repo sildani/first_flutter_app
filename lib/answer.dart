@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final String buttonLabel;
+  final Map<String, Object> buttonMap;
   final Function buttonPressEventHandler;
 
-  Answer({this.buttonLabel, this.buttonPressEventHandler});
+  Answer({
+    @required this.buttonMap,
+    @required this.buttonPressEventHandler,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +16,8 @@ class Answer extends StatelessWidget {
       child: RaisedButton(
         color: Colors.blue,
         textColor: Colors.white,
-        child: Text(this.buttonLabel),
-        onPressed: buttonPressEventHandler,
+        child: Text(this.buttonMap['text']),
+        onPressed: () => buttonPressEventHandler(this.buttonMap['score']),
       ),
     );
   }
